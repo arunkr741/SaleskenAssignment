@@ -22,10 +22,11 @@ let flag = true
 
  var interval
             j=0
+            
             i=0
     function start(i,j,clickedincanvas) {
         console.log(i,j)
-        if(flag || clickedincanvas ){
+        if(flag ){
              interval = setInterval(()=>{
                 ctx.fillStyle = "black"
                 ctx.fillRect(j, y[i], 5, height[i]);
