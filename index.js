@@ -25,28 +25,35 @@ let flag = true
  var interval
             j=0
            var index=0
+           var x =0
            var isPlaying = false;      
 
 
     function start(i,j,clickedincanvas) {
         console.log(i,j)
     
-       playpauseTrack()
+      
         if(flag || clickedincanvas ){
             playbtn.innerHTML=`<i class="fa fa-pause"></i>`
+            playTrack(i)
+            
             clearInterval(interval)
              interval = setInterval(()=>{
+                 console.log(i,j)
                 ctx.fillStyle = "rgb(221, 127, 149)"
                 ctx.fillRect(j, y[i], 5, height[i]);
                 j+=10
                 i++
-               
+                index=i
+               x=j
             },1000)
             flag=false
         }
         else{
+            pauseTrack()
             clearInterval(interval)
             flag=true
+           index=i
             playbtn.innerHTML=`<i class="fa fa-play"></i>`
         }  
     }
@@ -54,11 +61,11 @@ let flag = true
 
     playbtn.addEventListener("click",()=>{
         console.log(index)
-        start(index,j)
+        start(index,x)
     })
 
 
-    function filled(e) {
+    function canvasFunction(e) {
         startX=e.offsetX
         startY = e.offsetY
         clickedincanvas=true
@@ -82,32 +89,33 @@ let flag = true
     }
 
     c.addEventListener("mousedown",(e)=>{
-        filled(e)
+        canvasFunction(e)
        
     })
 
 ctx.stroke();
 
 function loadTrack(){
-    curr_track.src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Chad_Crouch/Arps/Chad_Crouch_-_Shipping_Lanes.mp3"
+    curr_track.src= "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/WFMU/Broke_For_Free/Directionless_EP/Broke_For_Free_-_01_-_Night_Owl.mp3"
     curr_track.load()
 }
 loadTrack()
-function playpauseTrack() {
-    console.log("playpauseTrack")
-    if (!isPlaying) playTrack();
-    else pauseTrack();
-  }
 
-  function playTrack() {
+    
+  
+    
+  
+
+  function playTrack(i) {
     console.log("playTrack")
+    
+    console.log(curr_track.currentTime)
     curr_track.play();
-    isPlaying = true;
-    console.log(isPlaying)
+    curr_track.currentTime = i+50
   }
 
   function pauseTrack() {
     console.log("pauseTrack")
     curr_track.pause();
-    isPlaying = false;
+  
   }
