@@ -5,8 +5,24 @@ let curr_track = document.getElementById('audio');
 
 var startX 
 var startY
+//---------------
+ // random background colour
+ function random_bg_color() {
 
+    // Get a random number between 64 to 256 (for getting lighter colors)
+    let red = Math.floor(Math.random() * 256) + 64;
+    let green = Math.floor(Math.random() * 256) + 64;
+    let blue = Math.floor(Math.random() * 256) + 64;
+
+    // Construct a color withe the given values
+    let bgColor = "rgb(" + red + "," + green + "," + blue + ")";
+
+    // Set the background to that color
+    document.body.style.background = bgColor;
+  } 
 random_bg_color()
+
+//------------------
 ctx.beginPath();
 ctx.lineWidth = "0";
 ctx.strokeStyle = "red";
@@ -52,7 +68,7 @@ for(let i=0;i<y.length;i++){
            }
            // start function start the music player
     function start(i,j,clickedincanvas) {
-     
+     random_bg_color()
       // toggling the flag for play or pause the music player
       // if flag true its starts playing
         if(flag || clickedincanvas ){
@@ -156,18 +172,5 @@ loadTrack()
   
   }
 
-  // random background colour
-  function random_bg_color() {
-
-    // Get a random number between 64 to 256 (for getting lighter colors)
-    let red = Math.floor(Math.random() * 256) + 64;
-    let green = Math.floor(Math.random() * 256) + 64;
-    let blue = Math.floor(Math.random() * 256) + 64;
-
-    // Construct a color withe the given values
-    let bgColor = "rgb(" + red + "," + green + "," + blue + ")";
-
-    // Set the background to that color
-    document.body.style.background = bgColor;
-  }
+ 
  
