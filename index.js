@@ -6,7 +6,7 @@ let curr_track = document.getElementById('audio');
 var startX 
 var startY
 
-
+random_bg_color()
 ctx.beginPath();
 ctx.lineWidth = "0";
 ctx.strokeStyle = "red";
@@ -137,6 +137,7 @@ ctx.stroke();
 function loadTrack(){
     curr_track.src= "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/WFMU/Broke_For_Free/Directionless_EP/Broke_For_Free_-_01_-_Night_Owl.mp3"
     curr_track.load()
+
 }
 loadTrack()
 
@@ -154,3 +155,19 @@ loadTrack()
     curr_track.pause();
   
   }
+
+  // random background colour
+  function random_bg_color() {
+
+    // Get a random number between 64 to 256 (for getting lighter colors)
+    let red = Math.floor(Math.random() * 256) + 64;
+    let green = Math.floor(Math.random() * 256) + 64;
+    let blue = Math.floor(Math.random() * 256) + 64;
+
+    // Construct a color withe the given values
+    let bgColor = "rgb(" + red + "," + green + "," + blue + ")";
+
+    // Set the background to that color
+    document.body.style.background = bgColor;
+  }
+ 
