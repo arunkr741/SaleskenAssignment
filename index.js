@@ -139,6 +139,9 @@ for(let i=0;i<y.length;i++){
         if(flag==false){
             start(i,j,true)
         }
+        else{
+            checkinitial=true
+        }
         
         // console.log(startX,startY) 
     }
